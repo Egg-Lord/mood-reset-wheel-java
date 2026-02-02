@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      COZY & WARM THEME (Journal vibe)
+      Parent: MaterialComponents DayNight NoActionBar
+    -->
+    <style name="Theme.MoodResetWheel" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <!-- Brand colors -->
+        <item name="colorPrimary">@color/brand_500</item>
+        <item name="colorPrimaryVariant">@color/brand_700</item>
+        <item name="colorSecondary">@color/secondary_500</item>
+
+        <!-- Surfaces -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+
+        <!-- Status bar (light icons on light background = false means dark icons) -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Optional: better default text selection/cursor color -->
+        <item name="colorControlActivated">@color/brand_500</item>
+        <item name="colorControlHighlight">#1A2A9D8F</item>
+
+        <!-- Default Material widget styles (optional but helpful) -->
+        <item name="materialButtonStyle">@style/AppButton.Primary</item>
+
+        <!-- If you use TextInputLayout often -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.FilledBox</item>
+
+        <!-- Avoid forcing dark mode resources if you prefer your own night theme -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+</resources>

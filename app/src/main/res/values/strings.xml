@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MoodResetWheel</string>
+
+    <string name="mute">Mute</string>
+    <string name="tap_instruction">Tap the circle gently — one at a time ✨</string>
+    <string name="tap_counter_default">0 / 10</string>
+
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="play_again">Play again</string>
+    <string name="exit">Exit</string>
+
+    <string name="breathing_title">Breathing Exercise</string>
+    <string name="breathing_subtitle">Tap the center button and breathe with the circle</string>
+    <string name="breathing_ready">Ready?</string>
+    <string name="breathing_tap_to_start">Tap Start to begin</string>
+
+    <string name="breathing_inhale">Inhale</string>
+    <string name="breathing_hold">Hold</string>
+    <string name="breathing_exhale">Exhale</string>
+
+    <string name="breathing_slow">Slow</string>
+    <string name="breathing_normal">Normal</string>
+    <string name="breathing_fast">Fast</string>
+
+    <!-- ✅ MISSING STRINGS (ADD THESE) -->
+    <string name="breathing_speed_slow">Slow pace selected</string>
+    <string name="breathing_speed_normal">Normal pace selected</string>
+    <string name="breathing_speed_fast">Fast pace selected</string>
+
+    <!-- Used by getString(R.string.breathing_seconds, number) -->
+    <string name="breathing_seconds">%1$d s</string>
+    <string name="breath_done_title">Great job 🌿</string>
+    <string name="breath_done_message">You took a pause — that matters. Ready for a gentle next step?</string>
+    <string name="breath_done_try_task">Try another task</string>
+    <string name="breath_done_spin_again">Spin the wheel again</string>
+</resources>
