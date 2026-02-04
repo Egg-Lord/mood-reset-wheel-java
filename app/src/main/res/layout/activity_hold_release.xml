@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_cozy_gradient"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Hold &amp; Release"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.05"/>
+
+    <!-- Instruction Text -->
+    <TextView
+        android:id="@+id/holdInstructionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Press Start to begin"
+        android:textSize="18sp"
+        android:textColor="@color/text_secondary"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Progress Bar (circular) -->
+    <ProgressBar
+        android:id="@+id/holdProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:progressDrawable="@drawable/progress_circle"
+        android:max="100"
+        android:progress="0"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/holdInstructionText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Round Counter -->
+    <TextView
+        android:id="@+id/holdRoundCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Round: 0/3"
+        android:textSize="16sp"
+        android:textColor="@color/text_primary"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/holdProgressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- The Circle to Hold (inside ProgressBar area) -->
+    <View
+        android:id="@+id/holdCircleView"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="@drawable/hold_circle_normal"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/holdInstructionText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Start Button -->
+    <Button
+        android:id="@+id/holdStartButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:text="Start"
+        android:layout_marginTop="32dp"
+        style="@style/AppButton.Primary"
+        app:layout_constraintTop_toBottomOf="@id/holdRoundCounter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Spin Again Button (hidden initially) -->
+    <Button
+        android:id="@+id/holdSpinAgainButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:text="Spin Again"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        style="@style/AppButton.Secondary"
+        app:layout_constraintTop_toBottomOf="@id/holdStartButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Exit Button (hidden initially) -->
+    <Button
+        android:id="@+id/holdExitButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:text="Exit"
+        android:visibility="gone"
+        android:layout_marginTop="8dp"
+        style="@style/AppButton.Secondary"
+        app:layout_constraintTop_toBottomOf="@id/holdSpinAgainButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

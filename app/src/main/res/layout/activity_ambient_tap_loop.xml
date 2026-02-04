@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <!-- Main content: title + preview area + result buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ambient Tap Loop"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:paddingBottom="12dp"
+            android:textColor="@android:color/black" />
+
+        <!-- You can move/resize this container in the designer to control the play area -->
+        <FrameLayout
+            android:id="@+id/playAreaContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_card_soft"
+            android:padding="12dp">
+
+            <com.example.moodresetwheel.RippleFieldView
+                android:id="@+id/rippleField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+               />
+
+            <TextView
+                android:id="@+id/tvHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clear the screen"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:alpha="0"
+                android:textColor="@android:color/black" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/resultPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="12dp"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnAgain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Again" />
+
+            <Button
+                android:id="@+id/btnDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/btnBackToLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back to State Log"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

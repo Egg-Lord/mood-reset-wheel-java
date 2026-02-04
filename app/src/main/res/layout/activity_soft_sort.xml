@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_workspace_grid"
+    android:padding="20dp"
+    android:clipChildren="false">
+
+    <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Shapes Tray" android:textStyle="bold" android:textColor="#5D4037"
+        android:layout_gravity="center_horizontal" android:layout_marginBottom="12dp"/>
+
+    <GridLayout
+        android:id="@+id/traySource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:padding="16dp"
+        android:background="@drawable/tray_border"
+        android:layout_marginBottom="40dp" />
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="140dp" android:clipChildren="false">
+        <View android:layout_width="80dp" android:layout_height="35dp"
+            android:layout_gravity="top|center_horizontal"
+            android:background="@drawable/shape_basket_handle" />
+        <GridLayout android:id="@+id/container_round" android:layout_width="match_parent"
+            android:layout_height="105dp" android:layout_gravity="bottom"
+            android:background="@drawable/soft_basket" android:padding="10dp" android:columnCount="4" />
+    </FrameLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="24dp" />
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="140dp" android:clipChildren="false">
+        <View android:layout_width="80dp" android:layout_height="35dp"
+            android:layout_gravity="top|center_horizontal"
+            android:background="@drawable/shape_basket_handle" />
+        <GridLayout android:id="@+id/container_pointy" android:layout_width="match_parent"
+            android:layout_height="105dp" android:layout_gravity="bottom"
+            android:background="@drawable/soft_basket" android:padding="10dp" android:columnCount="4" />
+    </FrameLayout>
+
+    <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1.5" />
+
+</LinearLayout>
