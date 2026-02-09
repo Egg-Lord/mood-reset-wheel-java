@@ -150,20 +150,26 @@ public class HoldReleaseActivity extends AppCompatActivity {
         currentRound++;
 
         holdProgressBar.setProgress(100); // Set to full for visual feedback
+        // Use the complete circle when round is successful
         holdCircleView.setBackground(
-                ContextCompat.getDrawable(this, R.drawable.hold_circle_normal)
+                ContextCompat.getDrawable(this, R.drawable.hold_circle_complete)
         );
 
         if (currentRound >= TOTAL_ROUNDS) {
-            holdInstructionText.setText("Great job! Completed!");
+            holdInstructionText.setText(getString(R.string.great_job));
             findViewById(R.id.holdSpinAgainButton).setVisibility(View.VISIBLE);
             findViewById(R.id.holdExitButton).setVisibility(View.VISIBLE);
             isHolding = false;
         } else {
-            holdInstructionText.setText("Nice! Next round...");
+            holdInstructionText.setText(getString(R.string.nice_next_round));
             new android.os.Handler().postDelayed(() -> {
                 holdProgressBar.setProgress(0);
                 holdCompleted = false;
+                // Switch back to normal circle for next round
+                holdCircleView.setBackground(
+                        ContextCompat.getDrawable(HoldReleaseActivity.this,
+                                R.drawable.hold_circle_normal)
+                );
                 startRound();
             }, 1200);
         }
@@ -174,9 +180,14 @@ public class HoldReleaseActivity extends AppCompatActivity {
         isHolding = false;
         holdCompleted = false;
         holdProgressBar.setProgress(0);
-        holdInstructionText.setText("Hold & Release Activity");
-        holdRoundCounter.setText("Press Start");
+        holdInstructionText.setText(getString(R.string.hold_activity_title));
+        holdRoundCounter.setText(getString(R.string.press_start_label));
         holdStartButton.setVisibility(View.VISIBLE);
+
+        // Make sure we're showing the normal circle at start
+        holdCircleView.setBackground(
+                ContextCompat.getDrawable(this, R.drawable.hold_circle_normal)
+        );
 
         findViewById(R.id.holdSpinAgainButton).setVisibility(View.GONE);
         findViewById(R.id.holdExitButton).setVisibility(View.GONE);

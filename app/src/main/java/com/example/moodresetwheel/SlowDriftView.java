@@ -26,6 +26,11 @@ public class SlowDriftView extends View {
 
     private ValueAnimator animator;
 
+    // Color constants for warm theme
+    private final int circleColor = Color.parseColor("#2A9D8F"); // brand_500 - sage/teal
+    private final int waveColor = Color.parseColor("#9AD9D0");   // brand_200 - light teal
+    private final int highlightColor = Color.parseColor("#F4A261"); // accent_500 - warm honey
+
     public SlowDriftView(Context context) {
         super(context);
         init();
@@ -37,18 +42,26 @@ public class SlowDriftView extends View {
     }
 
     private void init() {
-        // Circle paint (soft blue)
+        // Circle paint (sage/teal)
         circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        circlePaint.setColor(Color.parseColor("#64B5F6"));
+        circlePaint.setColor(circleColor);
         circlePaint.setStyle(Paint.Style.FILL);
 
-        // Wave paint (light gray)
+        // Add subtle shadow for depth
+        circlePaint.setShadowLayer(8f, 2f, 4f, Color.parseColor("#40000000"));
+
+        // Wave paint (light teal)
         wavePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        wavePaint.setColor(Color.parseColor("#B0BEC5"));
+        wavePaint.setColor(waveColor);
         wavePaint.setStyle(Paint.Style.STROKE);
-        wavePaint.setStrokeWidth(3f);
+        wavePaint.setStrokeWidth(4f);
+        wavePaint.setStrokeCap(Paint.Cap.ROUND);
+        wavePaint.setStrokeJoin(Paint.Join.ROUND);
 
         wavePath = new Path();
+
+        // Enable hardware acceleration for shadows
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
     }
 
     @Override
@@ -56,7 +69,7 @@ public class SlowDriftView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
 
         waveAmplitude = h * 0.15f;
-        circleX = w / 2f;     //  center horizontally
+        circleX = w / 2f;     // center horizontally
         circleY = h / 2f;
     }
 
@@ -72,7 +85,15 @@ public class SlowDriftView extends View {
         circleY = centerY + waveAmplitude
                 * (float) Math.sin(circleX * waveFrequency + phase);
 
+        // Draw the main circle
         canvas.drawCircle(circleX, circleY, circleRadius, circlePaint);
+
+        // Add a subtle highlight on the circle
+        Paint highlightPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        highlightPaint.setColor(highlightColor);
+        highlightPaint.setStyle(Paint.Style.STROKE);
+        highlightPaint.setStrokeWidth(3f);
+        canvas.drawCircle(circleX, circleY, circleRadius + 2f, highlightPaint);
     }
 
     private void drawSineWave(Canvas canvas) {
@@ -90,6 +111,24 @@ public class SlowDriftView extends View {
         }
 
         canvas.drawPath(wavePath, wavePaint);
+
+        // Draw a second, thinner wave for depth
+        Paint subtleWavePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        subtleWavePaint.setColor(Color.parseColor("#E0F2F1")); // very light teal
+        subtleWavePaint.setStyle(Paint.Style.STROKE);
+        subtleWavePaint.setStrokeWidth(1.5f);
+        subtleWavePaint.setStrokeCap(Paint.Cap.ROUND);
+
+        Path subtleWavePath = new Path();
+        subtleWavePath.moveTo(0, centerY);
+
+        for (float x = 0; x <= width; x += 5) {
+            float y = centerY + waveAmplitude * 0.7f
+                    * (float) Math.sin(x * waveFrequency + phase + 0.5f);
+            subtleWavePath.lineTo(x, y);
+        }
+
+        canvas.drawPath(subtleWavePath, subtleWavePaint);
     }
 
     public void startAnimation() {

@@ -47,6 +47,11 @@ public class RippleFieldView extends View {
     private float minR = 66f; // 3x bigger
     private float maxR = 114f; // 3x bigger
 
+    // Color values for warm theme
+    private final int primaryColor = 0xFF2A9D8F; // brand_500 - sage/teal
+    private final int accentColor = 0xFFF4A261;  // accent_500 - warm honey
+    private final int lightPrimary = 0xFF9AD9D0; // brand_200 - light teal
+
     public RippleFieldView(Context context) {
         super(context);
         init();
@@ -169,7 +174,10 @@ public class RippleFieldView extends View {
     private void drawTarget(Canvas canvas, RippleTarget t, float scale, float alpha) {
         float r = t.baseR * scale;
         paint.setStyle(Paint.Style.FILL);
-        paint.setARGB((int) (alpha * 70), 160, 210, 255);
+
+        // Set outer color based on shape with warm theme
+        int outerColor = getOuterColor(t.shape, alpha);
+        paint.setColor(outerColor);
 
         switch (t.shape) {
             case 1: // ring
@@ -200,9 +208,36 @@ public class RippleFieldView extends View {
                 break;
         }
 
+        // Set inner circle color (lighter version of accent color)
         paint.setStyle(Paint.Style.FILL);
-        paint.setARGB((int) (alpha * 160), 210, 240, 255);
+        int innerAlpha = (int) (alpha * 160);
+        int innerColor = (innerAlpha << 24) | (accentColor & 0x00FFFFFF);
+        paint.setColor(innerColor);
         canvas.drawCircle(t.x, t.y, r * 0.42f, paint);
+    }
+
+    private int getOuterColor(int shape, float alpha) {
+        int color;
+        switch (shape) {
+            case 0: // circle - use primary color
+                color = primaryColor;
+                break;
+            case 1: // ring - use accent color
+                color = accentColor;
+                break;
+            case 2: // rounded rect - use light primary
+                color = lightPrimary;
+                break;
+            case 3: // diamond - use primary color with slight variation
+                color = 0xFF1F7A6F; // brand_700 - darker teal
+                break;
+            default:
+                color = primaryColor;
+        }
+
+        // Apply alpha
+        int alphaValue = (int) (alpha * 70);
+        return (alphaValue << 24) | (color & 0x00FFFFFF);
     }
 
     private boolean hasAnimatingTargets() {
