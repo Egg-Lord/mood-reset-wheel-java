@@ -22,7 +22,7 @@ public class WelcomeActivity extends AppCompatActivity {
         String savedName = prefs.getString("username", null);
 
         if (savedName != null && !savedName.trim().isEmpty()) {
-            goToMain();
+            goToFeelingLog();
             return;
         }
 
@@ -51,12 +51,12 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
 
                 prefs.edit().putString("username", name).apply();
-                goToMain();
+                goToFeelingLog();
             }
         });
     }
 
-    private void goToMain() {
+    private void goToFeelingLog() {
         startActivity(new Intent(this, FeelingLogActivity.class));
         overridePendingTransition(
                 android.R.anim.fade_in,

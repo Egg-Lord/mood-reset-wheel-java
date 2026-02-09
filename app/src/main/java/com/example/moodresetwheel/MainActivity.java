@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         prefs.edit().remove("username").apply();
 
         // Always go to Welcome
-        startActivity(new Intent(this, WelcomeActivity.class));
+        startActivity(new Intent(this, BreathingActivity.class));
         finish();
     }
 }

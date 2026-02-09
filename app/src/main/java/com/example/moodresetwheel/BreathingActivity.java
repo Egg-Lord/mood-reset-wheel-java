@@ -65,6 +65,9 @@ public class BreathingActivity extends AppCompatActivity {
         btnNormal = findViewById(R.id.btnNormal);
         btnFast = findViewById(R.id.btnFast);
 
+        highlightButton(btnNormal);
+        setReadyUI();
+
         setSpeed(SpeedMode.NORMAL);
         setReadyUI();
 
@@ -84,6 +87,25 @@ public class BreathingActivity extends AppCompatActivity {
     private void setSpeed(SpeedMode mode) {
         speedMode = mode;
 
+        // Reset ALL buttons to secondary/outlined style
+        resetButtonToSecondary(btnSlow);
+        resetButtonToSecondary(btnNormal);
+        resetButtonToSecondary(btnFast);
+
+        // Highlight the selected button
+        switch (mode) {
+            case SLOW:
+                highlightButton(btnSlow);
+                break;
+            case NORMAL:
+                highlightButton(btnNormal);
+                break;
+            case FAST:
+                highlightButton(btnFast);
+                break;
+        }
+
+        // Update the enabled state
         btnSlow.setEnabled(mode != SpeedMode.SLOW);
         btnNormal.setEnabled(mode != SpeedMode.NORMAL);
         btnFast.setEnabled(mode != SpeedMode.FAST);
@@ -101,6 +123,22 @@ public class BreathingActivity extends AppCompatActivity {
                     tvTimer.setText(getString(R.string.breathing_speed_normal));
             }
         }
+    }
+
+    private void highlightButton(MaterialButton button) {
+        // Make button filled with green background and white text
+        button.setBackgroundTintList(android.content.res.ColorStateList.valueOf(
+                getResources().getColor(R.color.brand_500)));
+        button.setTextColor(getResources().getColor(R.color.white));
+        button.setStrokeWidth(0); // Remove outline
+    }
+
+    private void resetButtonToSecondary(MaterialButton button) {
+        button.setBackgroundTintList(android.content.res.ColorStateList.valueOf(
+                getResources().getColor(android.R.color.transparent)));
+        button.setTextColor(getResources().getColor(R.color.text_primary));
+        button.setStrokeColor(getResources().getColorStateList(R.color.outline));
+        button.setStrokeWidth(getResources().getDimensionPixelSize(R.dimen.stroke_width));
     }
 
     private void setReadyUI() {
@@ -204,14 +242,7 @@ public class BreathingActivity extends AppCompatActivity {
     }
 
     private void goToCompleteScreen() {
-        Intent intent = getIntent();
-        int feelingLevel = intent.getIntExtra(FeelingLogActivity.KEY_FEELING_LEVEL, 0);
-        String activityId = intent.getStringExtra("ACTIVITY_ID");
-
         Intent i = new Intent(this, BreathingCompleteActivity.class);
-        i.putExtra(FeelingLogActivity.KEY_FEELING_LEVEL, feelingLevel);
-        i.putExtra("ACTIVITY_ID", activityId);
-
         startActivity(i);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();

@@ -166,7 +166,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNormal"
-            style="@style/AppButton.Primary"
+            style="@style/AppButton.Secondary"
             android:layout_width="wrap_content"
             android:layout_marginStart="10dp"
             android:text="@string/breathing_normal" />

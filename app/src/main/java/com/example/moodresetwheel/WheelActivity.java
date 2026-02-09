@@ -111,7 +111,7 @@ public class WheelActivity extends AppCompatActivity {
 
         switch (feelingLevel) {
             case 0: return r;        // Soft Sort, Ambient
-            case 1: return 2 + r;    // Tap Calm, Breathing
+            case 1: return 2 + r;    // Tap Calm, BreathSync
             case 2: return 4 + r;    // Pattern, Box
             case 3: return 6 + r;    // Hold, Drift
         }
@@ -139,7 +139,7 @@ public class WheelActivity extends AppCompatActivity {
                 break;
 
             case 3:
-                intent = new Intent(this, BreathingActivity.class);
+                intent = new Intent(this, BreathSyncActivity.class);
                 break;
 
             case 4:

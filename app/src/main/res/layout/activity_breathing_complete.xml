@@ -48,22 +48,15 @@
                 android:text="@string/breath_done_message"
                 android:textSize="16sp"
                 android:textColor="@color/text_secondary"
-                android:lineSpacingExtra="3dp"/>
+                android:lineSpacingExtra="3dp"
+                android:layout_marginBottom="20dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnTryAnotherTask"
+                android:id="@+id/btnLetsStart"
                 style="@style/AppButton.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="@string/breath_done_try_task"
-                android:layout_marginTop="14dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSpinAgain"
-                style="@style/AppButton.Secondary"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:text="@string/breath_done_spin_again"
+                android:text="@string/btn_lets_start"
                 android:layout_marginTop="10dp"/>
 
         </LinearLayout>
