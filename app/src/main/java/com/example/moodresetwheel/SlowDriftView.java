@@ -10,6 +10,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public class SlowDriftView extends View {
 
     private Paint circlePaint;
@@ -18,10 +21,10 @@ public class SlowDriftView extends View {
 
     private float circleX;
     private float circleY;
-    private float circleRadius = 40f;
+    private final float circleRadius = 40f; // Made final
 
     private float waveAmplitude;
-    private float waveFrequency = 0.02f;
+    private final float waveFrequency = 0.02f; // Made final
     private float phase = 0f;
 
     private ValueAnimator animator;
@@ -31,12 +34,12 @@ public class SlowDriftView extends View {
     private final int waveColor = Color.parseColor("#9AD9D0");   // brand_200 - light teal
     private final int highlightColor = Color.parseColor("#F4A261"); // accent_500 - warm honey
 
-    public SlowDriftView(Context context) {
+    public SlowDriftView(@NonNull Context context) { // Added @NonNull
         super(context);
         init();
     }
 
-    public SlowDriftView(Context context, AttributeSet attrs) {
+    public SlowDriftView(@NonNull Context context, @Nullable AttributeSet attrs) { // Added annotations
         super(context, attrs);
         init();
     }
@@ -74,7 +77,7 @@ public class SlowDriftView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) { // Added @NonNull
         super.onDraw(canvas);
 
         if (getWidth() == 0 || getHeight() == 0) return;
@@ -96,7 +99,7 @@ public class SlowDriftView extends View {
         canvas.drawCircle(circleX, circleY, circleRadius + 2f, highlightPaint);
     }
 
-    private void drawSineWave(Canvas canvas) {
+    private void drawSineWave(@NonNull Canvas canvas) { // Added @NonNull
         wavePath.reset();
 
         float centerY = getHeight() / 2f;

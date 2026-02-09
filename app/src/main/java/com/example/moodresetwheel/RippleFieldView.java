@@ -14,6 +14,9 @@ import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,26 +46,26 @@ public class RippleFieldView extends View {
 
     // Tuning values
     private int targetCount = 12;
-    private long popDurationMs = 1200; // Slower animation
-    private float minR = 66f; // 3x bigger
-    private float maxR = 114f; // 3x bigger
+    private final long popDurationMs = 1200; // Slower animation - made final
+    private final float minR = 66f; // 3x bigger - made final
+    private final float maxR = 114f; // 3x bigger - made final
 
     // Color values for warm theme
     private final int primaryColor = 0xFF2A9D8F; // brand_500 - sage/teal
     private final int accentColor = 0xFFF4A261;  // accent_500 - warm honey
     private final int lightPrimary = 0xFF9AD9D0; // brand_200 - light teal
 
-    public RippleFieldView(Context context) {
+    public RippleFieldView(@NonNull Context context) { // Added @NonNull
         super(context);
         init();
     }
 
-    public RippleFieldView(Context context, AttributeSet attrs) {
+    public RippleFieldView(@NonNull Context context, @Nullable AttributeSet attrs) { // Added annotations
         super(context, attrs);
         init();
     }
 
-    public RippleFieldView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RippleFieldView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) { // Added annotations
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -125,7 +128,7 @@ public class RippleFieldView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) { // Added @NonNull
         super.onDraw(canvas);
 
         long now = SystemClock.uptimeMillis();
@@ -171,7 +174,7 @@ public class RippleFieldView extends View {
         }
     }
 
-    private void drawTarget(Canvas canvas, RippleTarget t, float scale, float alpha) {
+    private void drawTarget(@NonNull Canvas canvas, RippleTarget t, float scale, float alpha) { // Added @NonNull
         float r = t.baseR * scale;
         paint.setStyle(Paint.Style.FILL);
 
@@ -248,7 +251,7 @@ public class RippleFieldView extends View {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(@NonNull MotionEvent event) { // Added @NonNull
         float tx = event.getX();
         float ty = event.getY();
 
