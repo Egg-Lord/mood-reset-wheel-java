@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">MoodResetWheel</string>
 
+    <!-- Existing strings... -->
     <string name="mute">Mute</string>
     <string name="tap_instruction">Tap the circle gently — one at a time ✨</string>
     <string name="tap_counter_default">0 / 10</string>
@@ -35,4 +36,79 @@
     <string name="breath_done_message">You took a pause — that matters. Ready for a gentle next step?</string>
     <string name="breath_done_try_task">Try another task</string>
     <string name="breath_done_spin_again">Spin the wheel again</string>
+
+    <!-- ===== NEW STRINGS FOR ALL WARNINGS ===== -->
+
+    <!-- Pattern Echo -->
+    <string name="watch_pattern">Watch the pattern!</string>
+
+    <!-- Tap the Calm -->
+    <string name="tap_the_calm">Tap the Calm</string>
+    <string name="tap_each_circle">Tap each circle as it appears</string>
+    <string name="tap_counter">0 / 10</string>
+    <string name="spin_again">Spin Again</string>
+    <string name="exit_app">Exit App</string>
+    <string name="mute_button_desc">Mute sound</string>
+
+    <!-- Box Breathing -->
+    <string name="box_breathing">Box Breathing</string>
+    <string name="press_start">Press Start</string>
+    <string name="timer_initial">4</string>
+
+    <!-- Wheel -->
+    <string name="mood_reset_wheel">Mood Reset Wheel 🎡</string>
+    <string name="tap_to_spin">Tap the wheel to spin</string>
+    <string name="wheel_arrow">▼</string>
+    <string name="todays_reset">Today\u2019s gentle reset:</string>
+    <string name="spin_for_suggestion">Spin the wheel to get a calming suggestion 💛</string>
+
+    <!-- Welcome -->
+    <string name="welcome">Welcome 🌤️</string>
+    <string name="what_to_call">What should we call you?</string>
+    <string name="name_hint">e.g. Angel</string>
+    <!-- CHANGED: can't use "continue" (Java keyword) -->
+    <string name="btn_continue">Continue</string>
+
+    <!-- Slow Drift -->
+    <string name="slow_drift">Slow Drift</string>
+    <string name="sync_breathing">Sync your breathing with the circle\n↑ Inhale  •  ↓ Exhale</string>
+    <string name="done">Done</string>
+
+    <!-- Base Mini -->
+    <string name="mini_activity">Mini Activity</string>
+
+    <!-- Feeling Log -->
+    <string name="sunflower_desc">Sunflower</string>
+    <string name="how_feeling">How are ya feeling?</string>
+    <string name="neutral_emoji">😐</string>
+    <string name="neutral">Neutral</string>
+    <string name="tense_emoji">😬</string>
+    <string name="tense">Tense</string>
+    <string name="stressed_emoji">😟</string>
+    <string name="stressed">Stressed</string>
+    <string name="overwhelmed_emoji">😰</string>
+    <string name="overwhelmed">Overwhelmed</string>
+
+    <!-- Breath Sync -->
+    <string name="breathing_exercise">Breathing Exercise</string>
+    <string name="timer_30s">30s</string>
+    <string name="breathe_in">Breathe In</string>
+    <string name="follow_rhythm">Follow the circle\'s rhythm\nInhale as it expands, exhale as it contracts</string>
+
+    <!-- Ambient Tap Loop -->
+    <string name="ambient_tap_loop">Ambient Tap Loop</string>
+    <string name="clear_screen">Clear the screen</string>
+    <string name="back_to_state_log">Back to State Log</string>
+    <string name="again">Again</string>
+
+    <!-- Hold Release -->
+    <string name="hold_release">Hold &amp; Release</string>
+    <string name="press_start_to_begin">Press Start to begin</string>
+    <string name="hold_for_seconds">Hold for 5 seconds</string>
+    <string name="released_too_early">Released too early. Try again.</string>
+    <string name="great_job">Great job! Completed!</string>
+    <string name="nice_next_round">Nice! Next round...</string>
+    <string name="round_counter">Round: %1$d/%2$d</string>
+    <string name="hold_activity_title">Hold &amp; Release Activity</string>
+    <string name="press_start_label">Press Start</string>
 </resources>

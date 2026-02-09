@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Breathing Exercise"
+        android:text="@string/breathing_exercise"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -25,7 +25,7 @@
         android:layout_below="@id/titleText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:text="30s"
+        android:text="@string/timer_30s"
         android:textColor="@color/accent_500"
         android:textSize="36sp"
         android:textStyle="bold" />
@@ -45,7 +45,7 @@
         android:layout_below="@id/breathingCircle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Breathe In"
+        android:text="@string/breathe_in"
         android:textColor="@color/accent_500"
         android:textSize="28sp"
         android:textStyle="bold" />
@@ -57,7 +57,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
-        android:text="Follow the circle's rhythm\nInhale as it expands, exhale as it contracts"
+        android:text="@string/follow_rhythm"
         android:textColor="@color/brand_200"
         android:textSize="14sp"
         android:gravity="center"

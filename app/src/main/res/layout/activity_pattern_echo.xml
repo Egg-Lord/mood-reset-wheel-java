@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/tvMessage"
-        android:text="Watch the pattern!"
+        android:text="@string/watch_pattern"
         android:textSize="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
