@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9FAFB"
+    android:background="@color/background"
     android:padding="16dp">
 
     <!-- 🌻 Sunflower -->
@@ -27,7 +27,7 @@
         android:layout_marginEnd="16dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/surface"
         app:layout_constraintStart_toEndOf="@id/sunflowerIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/sunflowerIcon"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="How are ya feeling?"
-            android:textColor="#1F2937"
+            android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"/>
     </com.google.android.material.card.MaterialCardView>
@@ -52,7 +52,7 @@
         android:layout_marginTop="32dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="8dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/surface"
         app:layout_constraintTop_toBottomOf="@id/chatBubbleCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -71,8 +71,8 @@
                 android:max="3"
                 android:progress="0"
                 android:layout_marginBottom="32dp"
-                android:progressTint="#D1D5DB"
-                android:thumbTint="#9CA3AF"/>
+                android:progressTint="@color/outline"
+                android:thumbTint="@color/brand_500"/>
 
             <!-- Mood Grid -->
             <GridLayout
@@ -84,18 +84,19 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardNeutral"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:layout_columnWeight="1"
                     android:layout_margin="6dp"
                     android:clickable="true"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="2dp"
-                    app:strokeColor="#E5E7EB">
+                    app:strokeColor="@color/brand_200"
+                    app:cardBackgroundColor="#FFFBF0">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="16dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
@@ -104,8 +105,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="😐"
-                            android:textSize="24sp"/>
-
+                            android:textSize="28sp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -113,7 +113,8 @@
                             android:layout_marginStart="12dp"
                             android:text="Neutral"
                             android:textStyle="bold"
-                            android:textColor="#1F2937"/>
+                            android:textColor="#1F7A6F"
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -121,18 +122,19 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardTense"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:layout_columnWeight="1"
                     android:layout_margin="6dp"
                     android:clickable="true"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="2dp"
-                    app:strokeColor="#E5E7EB">
+                    app:strokeColor="@color/accent_500"
+                    app:cardBackgroundColor="#FFF7F0">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="16dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
@@ -141,7 +143,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="😬"
-                            android:textSize="24sp"/>
+                            android:textSize="28sp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -149,7 +151,8 @@
                             android:layout_marginStart="12dp"
                             android:text="Tense"
                             android:textStyle="bold"
-                            android:textColor="#1F2937"/>
+                            android:textColor="#C65D21"
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -157,18 +160,19 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardStressed"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:layout_columnWeight="1"
                     android:layout_margin="6dp"
                     android:clickable="true"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="2dp"
-                    app:strokeColor="#E5E7EB">
+                    app:strokeColor="@color/brand_500"
+                    app:cardBackgroundColor="#F0F9F7">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="16dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
@@ -177,7 +181,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="😟"
-                            android:textSize="24sp"/>
+                            android:textSize="28sp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -185,7 +189,8 @@
                             android:layout_marginStart="12dp"
                             android:text="Stressed"
                             android:textStyle="bold"
-                            android:textColor="#1F2937"/>
+                            android:textColor="#2A9D8F"
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -193,18 +198,19 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardOverwhelmed"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:layout_columnWeight="1"
                     android:layout_margin="6dp"
                     android:clickable="true"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="2dp"
-                    app:strokeColor="#E5E7EB">
+                    app:strokeColor="@color/secondary_500"
+                    app:cardBackgroundColor="#FFF0F0">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="16dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
@@ -213,7 +219,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="😰"
-                            android:textSize="24sp"/>
+                            android:textSize="28sp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -221,10 +227,10 @@
                             android:layout_marginStart="12dp"
                             android:text="Overwhelmed"
                             android:textStyle="bold"
-                            android:textColor="#1F2937"/>
+                            android:textColor="#B33A3A"
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
             </GridLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -233,16 +239,18 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/continueButton"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:text="Continue"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#2DD4BF"
-        app:cornerRadius="16dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:backgroundTint="@color/brand_500"
+        app:cornerRadius="20dp"
         app:elevation="8dp"
         app:layout_constraintTop_toBottomOf="@id/feelingCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -119,13 +119,6 @@
             android:layout_marginTop="6dp"
             android:lineSpacingExtra="2dp"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/tryItButton"
-            style="@style/AppButton.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="Try it"
-            android:layout_marginTop="12dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

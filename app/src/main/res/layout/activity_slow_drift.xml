@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_calm_gradient"
+    android:background="@color/background"
     android:padding="24dp">
 
-    <!-- Title -->
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -15,11 +15,10 @@
         android:text="Slow Drift"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#1976D2"
+        android:textColor="@color/brand_500"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Slow Drift Custom View (Sine Wave + Circle) -->
     <com.example.moodresetwheel.SlowDriftView
         android:id="@+id/slowDriftView"
         android:layout_width="match_parent"
@@ -27,7 +26,6 @@
         android:layout_below="@id/titleText"
         android:layout_above="@id/bottomContainer"/>
 
-    <!-- Bottom Container for Instructions and Buttons -->
     <LinearLayout
         android:id="@+id/bottomContainer"
         android:layout_width="match_parent"
@@ -36,31 +34,30 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <!-- Breathing Instructions -->
         <TextView
             android:id="@+id/instructionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sync your breathing with the circle\n↑ Inhale  •  ↓ Exhale"
-            android:textColor="#5F6368"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:gravity="center"
             android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif-medium"/>
 
-        <!-- Done Button (Initially Hidden) -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/doneButton"
-            style="@style/AppButton.Primary"
             android:layout_width="wrap_content"
             android:layout_height="56dp"
             android:text="Done"
             android:visibility="gone"
             android:paddingLeft="32dp"
             android:paddingRight="32dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/brand_500"
+            android:textColor="@color/white"
+            app:cornerRadius="12dp"/>
 
-        <!-- Bottom Action Buttons (Initially Hidden) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,20 +66,24 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/spinAgainButton"
-                style="@style/AppButton.Secondary"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Spin Again"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:backgroundTint="@color/accent_500"
+                android:textColor="@color/white"
+                app:cornerRadius="12dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/exitButton"
-                style="@style/AppButton.Danger"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Exit App"
                 android:layout_marginStart="16dp"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:backgroundTint="@color/danger"
+                android:textColor="@color/white"
+                app:cornerRadius="12dp"/>
         </LinearLayout>
-
     </LinearLayout>
-
 </RelativeLayout>

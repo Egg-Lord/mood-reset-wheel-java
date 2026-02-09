@@ -26,6 +26,11 @@ public class HoldReleaseActivity extends AppCompatActivity {
     private final long HOLD_DURATION_MS = 5000;
 
     private boolean isHolding = false;
+    private boolean holdCompleted = false; // NEW: Track if hold was completed
+
+    private ObjectAnimator progressAnim;
+    private android.os.Handler handler = new android.os.Handler();
+    private Runnable finishHold;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +63,12 @@ public class HoldReleaseActivity extends AppCompatActivity {
 
     private void setupHoldListener() {
         holdCircleView.setOnTouchListener(new View.OnTouchListener() {
-
-            ObjectAnimator progressAnim;
-            android.os.Handler handler = new android.os.Handler();
-            Runnable finishHold;
-
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
                 if (!isHolding) return false;
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    holdCompleted = false; // Reset flag when starting new hold
 
                     holdCircleView.setBackground(
                             ContextCompat.getDrawable(
@@ -85,6 +85,7 @@ public class HoldReleaseActivity extends AppCompatActivity {
                     progressAnim.start();
 
                     finishHold = () -> {
+                        holdCompleted = true; // Mark as completed
                         completeRound();
                     };
 
@@ -93,12 +94,25 @@ public class HoldReleaseActivity extends AppCompatActivity {
                 }
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
-
-                    if (finishHold != null) {
-                        handler.removeCallbacks(finishHold);
-                        progressAnim.cancel();
+                    // Only treat as early release if the hold wasn't completed
+                    if (!holdCompleted) {
+                        if (finishHold != null) {
+                            handler.removeCallbacks(finishHold);
+                        }
+                        if (progressAnim != null && progressAnim.isRunning()) {
+                            progressAnim.cancel();
+                        }
                         holdProgressBar.setProgress(0);
                         holdInstructionText.setText("Released too early. Try again.");
+                        holdCircleView.setBackground(
+                                ContextCompat.getDrawable(
+                                        HoldReleaseActivity.this,
+                                        R.drawable.hold_circle_normal
+                                )
+                        );
+                    } else {
+                        // Hold was completed, ACTION_UP is just finger release after completion
+                        // Do nothing or reset the circle background
                         holdCircleView.setBackground(
                                 ContextCompat.getDrawable(
                                         HoldReleaseActivity.this,
@@ -116,15 +130,26 @@ public class HoldReleaseActivity extends AppCompatActivity {
 
     private void startRound() {
         isHolding = true;
+        holdCompleted = false;
         holdStartButton.setVisibility(View.GONE);
         holdInstructionText.setText("Hold for 5 seconds");
         holdRoundCounter.setText("Round: " + (currentRound + 1) + "/" + TOTAL_ROUNDS);
     }
 
     private void completeRound() {
+        // Stop any running animation
+        if (progressAnim != null && progressAnim.isRunning()) {
+            progressAnim.cancel();
+        }
+
+        // Remove any pending callbacks
+        if (finishHold != null) {
+            handler.removeCallbacks(finishHold);
+        }
+
         currentRound++;
 
-        holdProgressBar.setProgress(0);
+        holdProgressBar.setProgress(100); // Set to full for visual feedback
         holdCircleView.setBackground(
                 ContextCompat.getDrawable(this, R.drawable.hold_circle_normal)
         );
@@ -136,12 +161,18 @@ public class HoldReleaseActivity extends AppCompatActivity {
             isHolding = false;
         } else {
             holdInstructionText.setText("Nice! Next round...");
-            new android.os.Handler().postDelayed(this::startRound, 1200);
+            new android.os.Handler().postDelayed(() -> {
+                holdProgressBar.setProgress(0);
+                holdCompleted = false;
+                startRound();
+            }, 1200);
         }
     }
 
     private void resetUI() {
         currentRound = 0;
+        isHolding = false;
+        holdCompleted = false;
         holdProgressBar.setProgress(0);
         holdInstructionText.setText("Hold & Release Activity");
         holdRoundCounter.setText("Press Start");
@@ -149,5 +180,14 @@ public class HoldReleaseActivity extends AppCompatActivity {
 
         findViewById(R.id.holdSpinAgainButton).setVisibility(View.GONE);
         findViewById(R.id.holdExitButton).setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Clean up handlers to prevent memory leaks
+        if (handler != null) {
+            handler.removeCallbacksAndMessages(null);
+        }
     }
 }

@@ -5,7 +5,8 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/tvMessage"
@@ -13,7 +14,8 @@
         android:textSize="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/text_primary"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -26,21 +28,23 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
-            android:background="@drawable/shape_circle"/>
+            android:background="@drawable/shape_circle"
+            android:backgroundTint="@color/brand_500"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSquare"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
-            android:background="@drawable/shape_square"/>
+            android:background="@drawable/shape_square"
+            android:backgroundTint="@color/accent_500"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnTriangle"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
-            android:background="@drawable/shape_triangle"/>
+            android:background="@drawable/shape_triangle"
+            android:backgroundTint="@color/secondary_500"/>
     </LinearLayout>
-
 </LinearLayout>
